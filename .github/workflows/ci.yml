@@ -1,0 +1,16 @@
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Use Node.js 15.x
+        with:
+          node-version: 15.x
+      - name: install
+        run: npm i
+      - name: test
+        run: npm run test
