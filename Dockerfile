@@ -9,6 +9,6 @@ RUN ls -la mnt
 RUN ls -la home
 RUN ls -la tmp
 COPY ./nginx.conf /etc/nginx/conf.d/
-COPY ./angular-starter/angular-starter/dist /usr/share/nginx/html
+COPY dist /usr/share/nginx/html
 
 EXPOSE 8080
