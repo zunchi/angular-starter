@@ -6,4 +6,6 @@ RUN chown -R nginx:nginx /usr/share/nginx/html
 COPY ./nginx.conf /etc/nginx/conf.d/site.conf
 COPY dist/angular-starter /usr/share/nginx/html
 
+USER nginx
+
 EXPOSE 8080
