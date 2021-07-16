@@ -39,6 +39,7 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v2
         with:
+          registry: ghcr.io
           push: true
           tags: b1ackadder/angular-starter:latest
       # - name: Archive build
