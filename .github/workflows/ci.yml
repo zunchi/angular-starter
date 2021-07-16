@@ -28,20 +28,22 @@ jobs:
         run: npm i
       - name: Build
         run: npm run build
-      # - name: check
-      #   run: ls -la
-      - name: Login to DockerHub
-        uses: docker/login-action@v1 
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-      - name: Build and push Docker image
-        uses: docker/build-push-action@v2
-        with:
-          registry: ghcr.io
-          push: true
-          tags: b1ackadder/angular-starter:latest
+      - name: check
+        run: ls -la
+      - name: Build the Docker image
+        run: docker build . --file github.Dockerfile
+      # - name: Login to DockerHub
+      #   uses: docker/login-action@v1 
+      #   with:
+      #     registry: ghcr.io
+      #     username: ${{ github.actor }}
+      #     password: ${{ secrets.GITHUB_TOKEN }}
+      # - name: Build and push Docker image
+      #   uses: docker/build-push-action@v2
+      #   with:
+      #     registry: ghcr.io
+      #     push: true
+      #     tags: b1ackadder/angular-starter:latest
       # - name: Archive build
       #   if: success()
       #   uses: actions/upload-artifact@v1
