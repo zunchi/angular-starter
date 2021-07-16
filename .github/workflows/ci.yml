@@ -31,7 +31,7 @@ jobs:
       - name: check
         run: ls -la
       - name: Build the Docker image
-        run: docker build . --file github.Dockerfile
+        run: docker build . --file Dockerfile
       # - name: Login to DockerHub
       #   uses: docker/login-action@v1 
       #   with:
