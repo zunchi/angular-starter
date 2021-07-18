@@ -41,6 +41,10 @@ jobs:
           context: .
           push: true
           tags: ghcr.io/b1ackadder/angular-starter:latest
+      ###---###
+      # Github прекрасно справляется с функцией отправки оповещений на почту, с указанием времени выполнения. 
+      # Хотя закомментированная ниже конструкция так же работает, только без указания времени. 
+      ###---###
       # - name: Send mail
       #   if: always()
       #   uses: dawidd6/action-send-mail@v2
