@@ -11,6 +11,8 @@ jobs:
           node-version: 14.x
       - name: Setup
         run: npm i
+      - name: Verify     
+        run: npm outdated
       - name: Test
         run: npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
 
