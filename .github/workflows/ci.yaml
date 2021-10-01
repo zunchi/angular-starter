@@ -9,11 +9,9 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 14.x
-        name: Install dependencies
+      - name: Install dependencies
         run: npm install
-      - name: ci
-        run: npm ci
       - name: install chrome
-        run: npm install chrome
+        run: npm install chromedriver --chromedriver_version=LATEST_89
       - name: Test
-        run: npm test
+        run: npm test --no-watch --no-progress --browsers=ChromeHeadlessCI
