@@ -9,7 +9,9 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 14.x
-      - name: Setup
-        run: npm i
+      - run: npm cache clean --force
+      - run: npm i -g @angular/cli
+      - name: Setup dependences
+        run: npm i -g npm-install-peers
       - name: Test
-        run: npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
+        run: npm test
