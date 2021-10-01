@@ -1,19 +1,30 @@
 name: CI of angular
 on: push
 jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
+ #   needs: test
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2
       - name: Use Node.js 14.x
         uses: actions/setup-node@v1
         with:
           node-version: 14.x
-        name: Install dependencies
-        run: npm install
-      - name: ci
-        run: npm ci
-      - name: install chrome
-        run: npm install chrome
-      - name: Test
-        run: npm test
+      - name: Setup
+        run: npm i
+      - name: Build
+        run: npm run build
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build and push
+        id: docker_build
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          push: true
+          tags: ghcr.io/zunchi/angular-starter:latest
